@@ -8,6 +8,9 @@ RUN apt-get install -y python3-pip
 RUN mkdir /opt/project
 WORKDIR /opt/project
 
+# add directory for th output files
+RUN mkdir /data/th
+
 # create virtual python env
 #RUN python3 -m venv venv
 
