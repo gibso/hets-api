@@ -21,8 +21,8 @@ def test_generator_th(client):
 
     # assert that every file was written
     assert len(fileList) == 5
-    assert fileList[0] == '/data/th/input_SemSys.th'
-    assert fileList[1] == '/data/th/input_Bbmin.th'
-    assert fileList[2] == '/data/th/input_Chord.th'
-    assert fileList[3] == '/data/th/input_G7.th'
-    assert fileList[4] == '/data/th/input_Symbols.th'
+    assert '/data/th/input_SemSys.th' in fileList
+    assert '/data/th/input_Bbmin.th' in fileList
+    assert '/data/th/input_Chord.th' in fileList
+    assert '/data/th/input_G7.th' in fileList
+    assert '/data/th/input_Symbols.th' in fileList
