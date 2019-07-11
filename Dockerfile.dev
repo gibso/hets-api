@@ -11,8 +11,8 @@ WORKDIR /opt/project
 # add directory for th output files
 RUN mkdir /data/th
 
-# copy everything
-COPY . .
+# copy setup file
+COPY setup.py .
 
 # activate python env and install dependencies
 RUN  pip3 install -e .
