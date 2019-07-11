@@ -4,9 +4,10 @@ import glob
 
 def test_generator_th(client):
 
-    # assert that there are no files at start
+    # remove every file in the output folder
     fileList = glob.glob('/data/th/*.th')
-    assert len(fileList) == 0
+    for fileName in fileList:
+        os.remove(fileName)
 
     # open file as binary
     file = open('/opt/project/tests/tritone_demo.casl', 'rb')
@@ -21,8 +22,8 @@ def test_generator_th(client):
 
     # assert that every file was written
     assert len(fileList) == 5
-    assert '/data/th/input_SemSys.th' in fileList
-    assert '/data/th/input_Bbmin.th' in fileList
-    assert '/data/th/input_Chord.th' in fileList
-    assert '/data/th/input_G7.th' in fileList
-    assert '/data/th/input_Symbols.th' in fileList
+    assert '/data/th/tritone_demo_SemSys.th' in fileList
+    assert '/data/th/tritone_demo_Bbmin.th' in fileList
+    assert '/data/th/tritone_demo_Chord.th' in fileList
+    assert '/data/th/tritone_demo_G7.th' in fileList
+    assert '/data/th/tritone_demo_Symbols.th' in fileList
