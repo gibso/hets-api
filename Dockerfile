@@ -1,17 +1,21 @@
 FROM spechub2/hets:latest
 
-# install pip
+# install virtual env
 RUN apt-get update
 RUN apt-get install -y python3-pip
 
-# copy requirements file and install python dependencies
-COPY requirements.txt .
-RUN pip3 install -r requirements.txt
-
-# add workdir for mounting the project
+# add workdir for project
 RUN mkdir /opt/project
 WORKDIR /opt/project
 
+# create virtual python env
+#RUN python3 -m venv venv
+
+# copy setup file
+COPY setup.py .
+
+# activate python env and install dependencies
+RUN  pip3 install -e .
+
 # start flask server
 CMD flask run --host=0.0.0.0
-
