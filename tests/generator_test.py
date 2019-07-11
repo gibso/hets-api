@@ -9,7 +9,7 @@ def test_generator_th(client):
     assert len(fileList) == 0
 
     # open file as binary
-    file = open('tritone_demo.casl', 'rb')
+    file = open('/opt/project/tests/tritone_demo.casl', 'rb')
     data = { 'file': file }
 
     response = client.post('/generator/th', data=data, content_type='multipart/form-data')
