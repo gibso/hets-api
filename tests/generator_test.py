@@ -1,10 +1,8 @@
 from flask_api import status
-import os
 import glob
 
-def test_generate_th_files(client):
 
-    remove_output_files()
+def test_generate_th_files(client):
 
     # open file as binary
     file = open('/opt/project/tests/tritone_demo.casl', 'rb')
@@ -28,8 +26,6 @@ def test_generate_th_files(client):
 
 def test_generate_xml_files(client):
 
-    remove_output_files()
-
     # open file as binary
     file = open('/opt/project/tests/tritone_demo.casl', 'rb')
     data = {'file': file}
@@ -45,8 +41,3 @@ def test_generate_xml_files(client):
     assert len(fileList) == 1
     assert '/data/xml/tritone_demo.xml' in fileList
 
-# remove every file in the output folder
-def remove_output_files():
-    fileList = glob.glob('/data/th/*.th')
-    for fileName in fileList:
-        os.remove(fileName)
