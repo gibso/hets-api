@@ -4,7 +4,7 @@ services:
   - docker
 
 before_script:
-  - docker build -t gibso/hetsapi .
+  - docker build -t gibso/hets-api .
 
 script:
-  - docker run gibso/hetsapi pytest
+  - docker run gibso/hets-api pytest

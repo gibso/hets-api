@@ -1,5 +1,5 @@
 import pytest
-from hetsapi import create_app
+from hets_api import create_app
 
 
 @pytest.fixture
