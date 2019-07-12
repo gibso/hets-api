@@ -2,12 +2,9 @@ from flask_api import status
 import os
 import glob
 
-def test_generator_th(client):
+def test_generate_th_files(client):
 
-    # remove every file in the output folder
-    fileList = glob.glob('/data/th/*.th')
-    for fileName in fileList:
-        os.remove(fileName)
+    remove_output_files()
 
     # open file as binary
     file = open('/opt/project/tests/tritone_demo.casl', 'rb')
@@ -27,3 +24,29 @@ def test_generator_th(client):
     assert '/data/th/tritone_demo_Chord.th' in fileList
     assert '/data/th/tritone_demo_G7.th' in fileList
     assert '/data/th/tritone_demo_Symbols.th' in fileList
+
+
+def test_generate_xml_files(client):
+
+    remove_output_files()
+
+    # open file as binary
+    file = open('/opt/project/tests/tritone_demo.casl', 'rb')
+    data = {'file': file}
+
+    response = client.post('/generator/xml', data=data, content_type='multipart/form-data')
+
+    assert response.status_code == status.HTTP_204_NO_CONTENT
+
+    # Get a list of all the file paths that ends with .th
+    fileList = glob.glob('/data/xml/*.xml')
+
+    # assert that every file was written
+    assert len(fileList) == 1
+    assert '/data/xml/tritone_demo.xml' in fileList
+
+# remove every file in the output folder
+def remove_output_files():
+    fileList = glob.glob('/data/th/*.th')
+    for fileName in fileList:
+        os.remove(fileName)
