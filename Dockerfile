@@ -11,12 +11,8 @@ WORKDIR /opt/project
 # copy everything
 COPY . .
 
-# activate python env and install dependencies
+# install dependencies
 RUN  pip3 install -e .
-
-# add directories for output files
-RUN mkdir /data/th
-RUN mkdir /data/xml
 
 # start flask server
 CMD flask run --host=0.0.0.0

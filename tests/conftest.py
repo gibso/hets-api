@@ -26,11 +26,6 @@ def runner(app):
 
 
 def remove_all_output_files():
-    remove_output_files('th')
-    remove_output_files('xml')
-
-
-def remove_output_files(file_type):
-    fileList = glob.glob(f'/data/{file_type}/*.{file_type}')
+    fileList = glob.glob(f'/data/*')
     for fileName in fileList:
         os.remove(fileName)

@@ -19,7 +19,7 @@ def generate_xml_files():
 def generate_files(output_type):
     casl_file = request.files['file']
     tmp_filepath = save_file_to_tmp(casl_file)
-    process = subprocess.run(['hets-server', f'--output-types={output_type}', f'--output-dir=/data/{output_type}/', tmp_filepath])
+    process = subprocess.run(['hets-server', f'--output-types={output_type}', f'--output-dir=/data', tmp_filepath])
     os.remove(tmp_filepath)
 
     if process.returncode == 0:
