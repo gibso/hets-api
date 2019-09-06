@@ -43,4 +43,4 @@ def test_generate_xml_files(client):
 
 
 def open_casl_file():
-    return open('/opt/project/tests/assets/tritone_demo.casl', 'rb')
+    return open('tests/assets/tritone_demo.casl', 'rb')
