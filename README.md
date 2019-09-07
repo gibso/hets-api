@@ -44,7 +44,7 @@ pip install -e .
 ```
 Then you can start the flask server by running
 ```
-FLASK_APP=hets_api flask run
+flask run
 ```
 Now you can reach your server at http://localhost:5000 
 
