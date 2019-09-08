@@ -1,4 +1,4 @@
-HETS API									
+HETS API [![Build Status](https://travis-ci.com/gibso/hets-api.svg?branch=master)](https://travis-ci.com/gibso/hets-api)
 =================================
 
 This project is part of the [Orpheus Application](https://github.com/gibso/orpheus-dev)
