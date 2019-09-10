@@ -1,6 +1,6 @@
 import os
-
 from flask import Flask
+
 
 def create_app(test_config=None):
     # create and configure the app
@@ -11,7 +11,8 @@ def create_app(test_config=None):
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
-        app.config.from_pyfile('config.py', silent=True)
+        import config
+        app.config.from_object('config')
     else:
         # load the test config if passed in
         app.config.from_mapping(test_config)
@@ -22,7 +23,7 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    from . import generator
-    app.register_blueprint(generator.bp)
+    from . import api
+    app.register_blueprint(api.bp)
 
     return app

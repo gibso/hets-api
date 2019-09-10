@@ -56,4 +56,7 @@ def test_generate_tptp_files(client):
 
     # assert that every file was written
     assert len(file_list) == 4
-    assert '/data/tritone_demo.tptp' in file_list
+    assert '/data/amalgam_tmp_Boat.tptp' in file_list
+    assert '/data/amalgam_tmp_Blend_v8__House_0_Boat_0.tptp' in file_list
+    assert '/data/amalgam_tmp_House.tptp' in file_list
+    assert '/data/amalgam_tmp_Generic.tptp' in file_list

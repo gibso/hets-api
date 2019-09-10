@@ -1,46 +1,34 @@
 import subprocess
+from flask import current_app as app
 import os
-from flask import Blueprint, request
-from flask_api import status
-
-bp = Blueprint('generator', __name__, url_prefix='/generator')
 
 
-@bp.route('/th', methods=['POST'])
-def generate_th_files():
-    return generate_files('th')
+class Processor:
 
+    def __init__(self, input_filestorage):
+        self.input_filestorage = input_filestorage
 
-@bp.route('/xml', methods=['POST'])
-def generate_xml_files():
-    return generate_files('xml')
+    def process_xml(self):
+        return self.process('xml')
 
+    def process_th(self):
+        return self.process('th')
 
-@bp.route('/tptp', methods=['POST'])
-def generate_tptp_files():
-    return generate_files('tptp')
+    def process_tptp(self):
+        return self.process('tptp', '--translation=CASL2TPTP_FOF')
 
+    def process(self, output_types, *args):
+        return subprocess.run([
+            app.config['HETS_EXECUTABLE'],
+            *args,
+            f'--output-types={output_types}',
+            '--output-dir=/data',
+            self.input_filepath
+        ])
 
-def generate_files(output_type):
-    casl_file = request.files['file']
-    tmp_filepath = save_file_to_tmp(casl_file)
-    process = subprocess.run([
-        'hets-server',
-        f'--output-types={output_type}',
-        '--output-dir=/data',
-        '--translation=CASL2TPTP_FOF',
-        '--verbose=2',
-        tmp_filepath
-    ])
-    os.remove(tmp_filepath)
-
-    if process.returncode == 0:
-        return '', status.HTTP_204_NO_CONTENT
-    return process.stdout, status.HTTP_500_INTERNAL_SERVER_ERROR
-
-
-def save_file_to_tmp(file):
-    base_filename = os.path.basename(file.filename)
-    tmp_filepath = f"/tmp/{base_filename}"
-    file.save(tmp_filepath)
-    return tmp_filepath
+    @property
+    def input_filepath(self):
+        base_filename = os.path.basename(self.input_filestorage.filename)
+        tmp_filepath = f"/tmp/{base_filename}"
+        self.input_filestorage.save(tmp_filepath)
+        return tmp_filepath

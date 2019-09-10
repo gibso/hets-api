@@ -7,7 +7,8 @@ import glob
 @pytest.fixture
 def app():
     app = create_app({
-        'TESTING': True
+        'TESTING': True,
+        'HETS_EXECUTABLE': '/opt/Hets/hets'
     })
 
     remove_all_output_files()
