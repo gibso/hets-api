@@ -1,0 +1,89 @@
+spec Generic = %% InfoValue: 4 -- CompressionValue: 0
+	 sort Concept	%%prio:0	(data sort)
+	 op boat : Concept	%%prio:0	(data operator)
+	 op building : Concept	%%prio:0	(data operator)
+	 op dwelling : Concept	%%prio:0	(data operator)
+	 op home : Concept	%%prio:0	(data operator)
+	 op house : Concept	%%prio:0	(data operator)
+	 op ship : Concept	%%prio:0	(data operator)
+	 op vessel : Concept	%%prio:0	(data operator)
+	 op water : Concept	%%prio:0	(data operator)
+	 pred RelatedTo : Concept * Concept	%% prio:1
+
+	. RelatedTo(boat, water)	%(Ax1)%	%priority(1)%	 %%id:4	eqClass: 4
+	. RelatedTo(boat, ship)	%(Ax2)%	%priority(1)%	 %%id:5	eqClass: 5
+	. RelatedTo(boat, vessel)	%(Ax3)%	%priority(1)%	 %%id:6	eqClass: 6
+	generated type
+Concept
+::= boat
+  | building
+  | dwelling
+  | home
+  | house
+  | ship
+  | vessel
+  | water	%(ga_generated_Concept)%	%priority(0)%	 %%id:7	eqClass: 3	(data axiom)
+end
+
+spec House = %% InfoValue: 4 -- CompressionValue: 0
+	 sort Concept	%%prio:0	(data sort)
+	 op boat : Concept	%%prio:0	(data operator)
+	 op building : Concept	%%prio:0	(data operator)
+	 op dwelling : Concept	%%prio:0	(data operator)
+	 op home : Concept	%%prio:0	(data operator)
+	 op house : Concept	%%prio:0	(data operator)
+	 op ship : Concept	%%prio:0	(data operator)
+	 op vessel : Concept	%%prio:0	(data operator)
+	 op water : Concept	%%prio:0	(data operator)
+	 pred RelatedTo : Concept * Concept	%% prio:1
+
+	. RelatedTo(house, building)	%(Ax1)%	%priority(1)%	 %%id:0	eqClass: 0
+	. RelatedTo(house, home)	%(Ax2)%	%priority(1)%	 %%id:1	eqClass: 1
+	. RelatedTo(house, dwelling)	%(Ax3)%	%priority(1)%	 %%id:2	eqClass: 2
+	generated type
+Concept
+::= boat
+  | building
+  | dwelling
+  | home
+  | house
+  | ship
+  | vessel
+  | water	%(ga_generated_Concept)%	%priority(0)%	 %%id:3	eqClass: 3	(data axiom)
+end
+
+view GenToHouse : Generic to House 
+ end
+
+spec Boat = %% InfoValue: 4 -- CompressionValue: 0
+	 sort Concept	%%prio:0	(data sort)
+	 op boat : Concept	%%prio:0	(data operator)
+	 op building : Concept	%%prio:0	(data operator)
+	 op dwelling : Concept	%%prio:0	(data operator)
+	 op home : Concept	%%prio:0	(data operator)
+	 op house : Concept	%%prio:0	(data operator)
+	 op ship : Concept	%%prio:0	(data operator)
+	 op vessel : Concept	%%prio:0	(data operator)
+	 op water : Concept	%%prio:0	(data operator)
+	 pred RelatedTo : Concept * Concept	%% prio:1
+
+	. RelatedTo(boat, water)	%(Ax1)%	%priority(1)%	 %%id:4	eqClass: 4
+	. RelatedTo(boat, ship)	%(Ax2)%	%priority(1)%	 %%id:5	eqClass: 5
+	. RelatedTo(boat, vessel)	%(Ax3)%	%priority(1)%	 %%id:6	eqClass: 6
+	generated type
+Concept
+::= boat
+  | building
+  | dwelling
+  | home
+  | house
+  | ship
+  | vessel
+  | water	%(ga_generated_Concept)%	%priority(0)%	 %%id:7	eqClass: 3	(data axiom)
+end
+
+view GenToBoat : Generic to Boat 
+ end
+
+spec Blend_v8__House_0_Boat_0 = combine GenToHouse,GenToBoat end
+

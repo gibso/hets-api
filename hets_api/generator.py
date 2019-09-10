@@ -16,10 +16,22 @@ def generate_xml_files():
     return generate_files('xml')
 
 
+@bp.route('/tptp', methods=['POST'])
+def generate_tptp_files():
+    return generate_files('tptp')
+
+
 def generate_files(output_type):
     casl_file = request.files['file']
     tmp_filepath = save_file_to_tmp(casl_file)
-    process = subprocess.run(['hets-server', f'--output-types={output_type}', f'--output-dir=/data', tmp_filepath])
+    process = subprocess.run([
+        'hets-server',
+        f'--output-types={output_type}',
+        '--output-dir=/data',
+        '--translation=CASL2TPTP_FOF',
+        '--verbose=2',
+        tmp_filepath
+    ])
     os.remove(tmp_filepath)
 
     if process.returncode == 0:

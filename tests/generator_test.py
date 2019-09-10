@@ -5,7 +5,7 @@ import glob
 def test_generate_th_files(client):
 
     # open file as binary
-    file = open_casl_file()
+    file = open('tests/assets/tritone_demo.casl', 'rb')
     data = { 'file': file }
 
     response = client.post('/generator/th', data=data, content_type='multipart/form-data')
@@ -27,14 +27,14 @@ def test_generate_th_files(client):
 def test_generate_xml_files(client):
 
     # open file as binary
-    file = open_casl_file()
+    file = open('tests/assets/tritone_demo.casl', 'rb')
     data = {'file': file}
 
     response = client.post('/generator/xml', data=data, content_type='multipart/form-data')
 
     assert response.status_code == status.HTTP_204_NO_CONTENT
 
-    # Get a list of all the file paths that ends with .th
+    # Get a list of all the file paths that ends with .xml
     file_list = glob.glob('/data/*.xml')
 
     # assert that every file was written
@@ -42,5 +42,18 @@ def test_generate_xml_files(client):
     assert '/data/tritone_demo.xml' in file_list
 
 
-def open_casl_file():
-    return open('tests/assets/tritone_demo.casl', 'rb')
+def test_generate_tptp_files(client):
+    # open file as binary
+    file = open('tests/assets/amalgam_tmp.casl', 'rb')
+    data = {'file': file}
+
+    response = client.post('/generator/tptp', data=data, content_type='multipart/form-data')
+
+    assert response.status_code == status.HTTP_204_NO_CONTENT
+
+    # Get a list of all the file paths that ends with .tptp
+    file_list = glob.glob('/data/*.tptp')
+
+    # assert that every file was written
+    assert len(file_list) == 4
+    assert '/data/tritone_demo.tptp' in file_list
