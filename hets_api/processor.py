@@ -24,7 +24,7 @@ class Processor:
             f'--output-types={output_types}',
             '--output-dir=/data',
             self.input_filepath
-        ])
+        ], check=True)
 
     @property
     def input_filepath(self):
