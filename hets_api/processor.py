@@ -22,7 +22,7 @@ class Processor:
             app.config['HETS_EXECUTABLE'],
             *args,
             f'--output-types={output_types}',
-            '--output-dir=/data',
+            '--output-dir=/opt/data',
             self.input_filepath
         ], check=True)
 

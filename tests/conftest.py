@@ -27,6 +27,6 @@ def runner(app):
 
 
 def remove_all_output_files():
-    fileList = glob.glob(f'/data/*')
+    fileList = glob.glob(f'/opt/data/*')
     for fileName in fileList:
         os.remove(fileName)

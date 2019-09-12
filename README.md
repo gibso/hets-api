@@ -49,9 +49,9 @@ flask run
 Now you can reach your server at http://localhost:5000 
 
 ### to be considered
-Currently the files are created in the  `/data/` location. However, this is only useful when running the project in a docker container, then you can mount any local folder to the containers `/data` location:
+Currently the files are created in the  `/opt/data/` location. However, this is only useful when running the project in a docker container, then you can mount any local folder to the containers `/opt/data` location:
 ```
-docker run --rm -it -p 5000:5000 -v ~/data:/data hets-api
+docker run --rm -it -p 5000:5000 -v ~/data:/opt/data hets-api
 ```
 
 ### Author

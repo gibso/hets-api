@@ -31,6 +31,7 @@ RUN apt-get update
 RUN apt-get install -y python3-pip
 
 # add workdir for project
+RUN mkdir /opt/data
 RUN mkdir /opt/project
 WORKDIR /opt/project
 

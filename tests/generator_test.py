@@ -13,15 +13,15 @@ def test_generate_th_files(client):
     assert response.status_code == status.HTTP_204_NO_CONTENT
 
     # Get a list of all the file paths that ends with .th
-    file_list = glob.glob('/data/*.th')
+    file_list = glob.glob('/opt/data/*.th')
 
     # assert that every file was written
     assert len(file_list) == 5
-    assert '/data/tritone_demo_SemSys.th' in file_list
-    assert '/data/tritone_demo_Bbmin.th' in file_list
-    assert '/data/tritone_demo_Chord.th' in file_list
-    assert '/data/tritone_demo_G7.th' in file_list
-    assert '/data/tritone_demo_Symbols.th' in file_list
+    assert '/opt/data/tritone_demo_SemSys.th' in file_list
+    assert '/opt/data/tritone_demo_Bbmin.th' in file_list
+    assert '/opt/data/tritone_demo_Chord.th' in file_list
+    assert '/opt/data/tritone_demo_G7.th' in file_list
+    assert '/opt/data/tritone_demo_Symbols.th' in file_list
 
 
 def test_generate_xml_files(client):
@@ -35,11 +35,11 @@ def test_generate_xml_files(client):
     assert response.status_code == status.HTTP_204_NO_CONTENT
 
     # Get a list of all the file paths that ends with .xml
-    file_list = glob.glob('/data/*.xml')
+    file_list = glob.glob('/opt/data/*.xml')
 
     # assert that every file was written
     assert len(file_list) == 1
-    assert '/data/tritone_demo.xml' in file_list
+    assert '/opt/data/tritone_demo.xml' in file_list
 
 
 def test_generate_tptp_files(client):
@@ -52,11 +52,11 @@ def test_generate_tptp_files(client):
     assert response.status_code == status.HTTP_204_NO_CONTENT
 
     # Get a list of all the file paths that ends with .tptp
-    file_list = glob.glob('/data/*.tptp')
+    file_list = glob.glob('/opt/data/*.tptp')
 
     # assert that every file was written
     assert len(file_list) == 4
-    assert '/data/amalgam_tmp_Boat.tptp' in file_list
-    assert '/data/amalgam_tmp_Blend_v8__House_0_Boat_0.tptp' in file_list
-    assert '/data/amalgam_tmp_House.tptp' in file_list
-    assert '/data/amalgam_tmp_Generic.tptp' in file_list
+    assert '/opt/data/amalgam_tmp_Boat.tptp' in file_list
+    assert '/opt/data/amalgam_tmp_Blend_v8__House_0_Boat_0.tptp' in file_list
+    assert '/opt/data/amalgam_tmp_House.tptp' in file_list
+    assert '/opt/data/amalgam_tmp_Generic.tptp' in file_list
