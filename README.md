@@ -3,6 +3,8 @@ HETS API [![Build Status](https://travis-ci.com/gibso/hets-api.svg?branch=master
 
 This project is part of the [Orpheus Application](https://github.com/gibso/orpheus-dev)
 
+The [Orpheus Project](https://github.com/gibso/orpheus) implements a computational framework for conceptual blending with mental spaces extracted from the [ConceptNet knowledge base](https://github.com/commonsense/conceptnet5).
+
 ### Overview
 This is a flask service, that serves as a API-Extension for the [The Heterogeneous Tool Set (HETS)](https://github.com/spechub/Hets).
 It has currently two endpoints that accept a .casl file, and perform a translation into .th or .xml files.
@@ -54,5 +56,8 @@ Currently the files are created in the  `/opt/data/` location. However, this is 
 docker run --rm -it -p 5000:5000 -v ~/data:/opt/data hets-api
 ```
 
-### Author
-Oliver Görtz (oliver.goertz{at}gmail.com)
+## Author
+
+Developed by Oliver Görtz.
+
+Contact me via [GitHub](https://github.com/gibso), [XING](https://www.xing.com/profile/Oliver_Goertz9), [Facebook](https://www.facebook.com/ogoertz), [Twitter](https://twitter.com/SuperMcOli) or just write an [email](mailto:oliver.goertz@gmail.com).
